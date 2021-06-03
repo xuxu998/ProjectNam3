@@ -1,0 +1,29 @@
+C:\Users\PC\source\repos\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\PC\source\repos\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\PC\source\repos\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\PC\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
+C:\Users\PC\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\PC\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\PC\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\PC\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\PC\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\PC\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\PC\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form2.resources
+C:\Users\PC\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Controltab.resources
+C:\Users\PC\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Confirm.resources
+C:\Users\PC\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Simulation.resources
+C:\Users\PC\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.AGVData.resources
+C:\Users\PC\Desktop\Project Thuc Tap\Project Thuc Tap\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
+C:\Users\PC\Desktop\Project Thuc Tap\Project Thuc Tap\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Confirm.resources
+C:\Users\PC\Desktop\Project Thuc Tap\Project Thuc Tap\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\PC\Desktop\Project Thuc Tap\Project Thuc Tap\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form2.resources
+C:\Users\PC\Desktop\Project Thuc Tap\Project Thuc Tap\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Controltab.resources
+C:\Users\PC\Desktop\Project Thuc Tap\Project Thuc Tap\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.AGVData.resources
+C:\Users\PC\Desktop\Project Thuc Tap\Project Thuc Tap\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\PC\Desktop\Project Thuc Tap\Project Thuc Tap\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\PC\Desktop\Project Thuc Tap\Project Thuc Tap\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\PC\Desktop\Project Thuc Tap\Project Thuc Tap\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\PC\Desktop\Project Thuc Tap\Project Thuc Tap\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\PC\Desktop\Project Thuc Tap\Project Thuc Tap\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\PC\Desktop\Project Thuc Tap\Project Thuc Tap\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\PC\Desktop\Project Thuc Tap\Project Thuc Tap\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
