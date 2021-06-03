@@ -484,132 +484,122 @@ namespace WindowsFormsApp1
             }
         }
         
-/*        private void Confirm_Click(object sender, EventArgs e)
+        private void Confirm_Click(object sender, EventArgs e)
         {
-            Thread AGV = new Thread(
-                delegate ()
-                {
-                    if (serialPort1.IsOpen == true)
-                    {
-                        byte[] c = { 0x99 };
-                        serialPort1.Write(c, 0, 1);
-                        int s = serialPort1.ReadByte();
-                        txtOutput.Text = s.ToString();
- 
-                        if (s == 48)
-                        {
-                            Available1.Text = "Ready";
-                            Available1.ForeColor = Color.Green;
-                            Call1.Enabled = true;
-                            Available2.Text = "Ready";
-                            Available2.ForeColor = Color.Green;
-                            Call2.Enabled = true;
-                            Available3.Text = "Ready";
-                            Available3.ForeColor = Color.Green;
-                            Call3.Enabled = true;
-                        }
-                        if (s == 49)
-                        {
-                            Available1.Text = "Ready";
-                            Available1.ForeColor = Color.Green;
-                            Call1.Enabled = true;
-                            Available2.Text = "Ready";
-                            Available2.ForeColor = Color.Green;
-                            Call2.Enabled = true;
-                            Available3.Text = "Not Ready";
-                            Available3.ForeColor = Color.Red;
-                            Call3.Enabled = false;
-                        }
-                        if (s == 50)
-                        {
-                            Available1.Text = "Ready";
-                            Available1.ForeColor = Color.Green;
-                            Call1.Enabled = true;
-                            Available2.Text = "Not Ready";
-                            Available2.ForeColor = Color.Red;
-                            Call2.Enabled = false;
-                            Available3.Text = "Ready";
-                            Available3.ForeColor = Color.Green;
-                            Call3.Enabled = true;
-                        }
-                        if (s == 51)
-                        {
-                            Available1.Text = "Ready";
-                            Available1.ForeColor = Color.Green;
-                            Call1.Enabled = true;
-                            Available2.Text = "Not Ready";
-                            Available2.ForeColor = Color.Red;
-                            Call2.Enabled = false;
-                            Available3.Text = "Not Ready";
-                            Available3.ForeColor = Color.Red;
-                            Call3.Enabled = false;
-                        }
-                        if (s == 52)
-                        {
-                            Available1.Text = "Not Ready";
-                            Available1.ForeColor = Color.Red;
-                            Call1.Enabled = false;
-                            Available2.Text = "Ready";
-                            Available2.ForeColor = Color.Green;
-                            Call2.Enabled = true;
-                            Available3.Text = "Ready";
-                            Available3.ForeColor = Color.Green;
-                            Call3.Enabled = true;
-                        }
-                        if (s == 53)
-                        {
-                            Available1.Text = "Not Ready";
-                            Available1.ForeColor = Color.Red;
-                            Call1.Enabled = false;
-                            Available2.Text = "Ready";
-                            Available2.ForeColor = Color.Green;
-                            Call2.Enabled = true;
-                            Available3.Text = "Not Ready";
-                            Available3.ForeColor = Color.Red;
-                            Call3.Enabled = false;
-                        }
-                        if (s == 54)
-                        {
-                            Available1.Text = "Not Ready";
-                            Available1.ForeColor = Color.Red;
-                            Call1.Enabled = false;
-                            Available2.Text = "Not Ready";
-                            Available2.ForeColor = Color.Red;
-                            Call2.Enabled = false;
-                            Available3.Text = "Ready";
-                            Available3.ForeColor = Color.Green;
-                            Call3.Enabled = true;
-                        }
-                        if (s == 55)
-                        {
-                            Available1.Text = "Not Ready";
-                            Available1.ForeColor = Color.Red;
-                            Call1.Enabled = false;
-                            Available2.Text = "Not Ready";
-                            Available2.ForeColor = Color.Red;
-                            Call2.Enabled = false;
-                            Available3.Text = "Not Ready";
-                            Available3.ForeColor = Color.Red;
-                            Call3.Enabled = false;
-                        }
-                        Thread.Sleep(50);
-                    }
-                }
-                );
-            AGV.Start();    
-
-        }*/
+                        byte[] c = { 0x99 }; serialPort1.Write(c, 0, 1);
+        }
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             System.Threading.Thread.Sleep(500);
             int count = 0;
             int inputLength = serialPort1.ReadBufferSize;
+            
             byte[] input = new byte[inputLength];
             count = serialPort1.Read(input, 0, inputLength);
-
             byte[] data = new byte[count];
             Buffer.BlockCopy(input, 0, data, 0, count);
+
+            if(count == 1)
+            {
+                if (data[0] == 48)
+                {
+                    Invoke(new MethodInvoker(() =>
+                    Available1.Text = "Ready"));
+                    Invoke(new MethodInvoker(() => Available1.ForeColor = Color.Green));
+                    Invoke(new MethodInvoker(() => Call1.Enabled = true));
+                    Invoke(new MethodInvoker(() => Available2.Text = "Ready"));
+                    Invoke(new MethodInvoker(() => Available2.ForeColor = Color.Green));
+                    Invoke(new MethodInvoker(() => Call2.Enabled = true));
+                    Invoke(new MethodInvoker(() => Available3.Text = "Ready"));
+                    Invoke(new MethodInvoker(() => Available3.ForeColor = Color.Green));
+                    Invoke(new MethodInvoker(() => Call3.Enabled = true));
+                }
+                if (data[0] == 49)
+                {
+                    Invoke(new MethodInvoker(() => Available1.Text = "Ready"));
+                    Invoke(new MethodInvoker(() => Available1.ForeColor = Color.Green));
+                    Invoke(new MethodInvoker(() => Call1.Enabled = true));
+                    Invoke(new MethodInvoker(() => Available2.Text = "Ready"));
+                    Invoke(new MethodInvoker(() => Available2.ForeColor = Color.Green));
+                    Invoke(new MethodInvoker(() => Call2.Enabled = true));
+                    Invoke(new MethodInvoker(() => Available3.Text = "Not Ready"));
+                    Invoke(new MethodInvoker(() => Available3.ForeColor = Color.Red));
+                    Invoke(new MethodInvoker(() => Call3.Enabled = false));
+                }
+                if (data[0] == 50)
+                {
+                    Invoke(new MethodInvoker(() => Available1.Text = "Ready"));
+                    Invoke(new MethodInvoker(() => Available1.ForeColor = Color.Green));
+                    Invoke(new MethodInvoker(() => Call1.Enabled = true));
+                    Invoke(new MethodInvoker(() => Available2.Text = "Not Ready"));
+                    Invoke(new MethodInvoker(() => Available2.ForeColor = Color.Red));
+                    Invoke(new MethodInvoker(() => Call2.Enabled = false));
+                    Invoke(new MethodInvoker(() => Available3.Text = "Ready"));
+                    Invoke(new MethodInvoker(() => Available3.ForeColor = Color.Green));
+                    Invoke(new MethodInvoker(() => Call3.Enabled = true));
+                }
+                if (data[0] == 51)
+                {
+                    Invoke(new MethodInvoker(() => Available1.Text = "Ready"));
+                    Invoke(new MethodInvoker(() => Available1.ForeColor = Color.Green));
+                    Invoke(new MethodInvoker(() => Call1.Enabled = true));
+                    Invoke(new MethodInvoker(() => Available2.Text = "Not Ready"));
+                    Invoke(new MethodInvoker(() => Available2.ForeColor = Color.Red));
+                    Invoke(new MethodInvoker(() => Call2.Enabled = false));
+                    Invoke(new MethodInvoker(() => Available3.Text = "Not Ready"));
+                    Invoke(new MethodInvoker(() => Available3.ForeColor = Color.Red));
+                    Invoke(new MethodInvoker(() => Call3.Enabled = false));
+                }
+                if (data[0] == 52)
+                {
+                    Invoke(new MethodInvoker(() => Available1.Text = "Not Ready"));
+                    Invoke(new MethodInvoker(() => Available1.ForeColor = Color.Red));
+                    Invoke(new MethodInvoker(() => Call1.Enabled = false));
+                    Invoke(new MethodInvoker(() => Available2.Text = "Ready"));
+                    Invoke(new MethodInvoker(() => Available2.ForeColor = Color.Green));
+                    Invoke(new MethodInvoker(() => Call2.Enabled = true));
+                    Invoke(new MethodInvoker(() => Available3.Text = "Ready"));
+                    Invoke(new MethodInvoker(() => Available3.ForeColor = Color.Green));
+                    Invoke(new MethodInvoker(() => Call3.Enabled = true));
+                }
+                if (data[0] == 53)
+                {
+                    Invoke(new MethodInvoker(() => Available1.Text = "Not Ready"));
+                    Invoke(new MethodInvoker(() => Available1.ForeColor = Color.Red));
+                    Invoke(new MethodInvoker(() => Call1.Enabled = false));
+                    Invoke(new MethodInvoker(() => Available2.Text = "Ready"));
+                    Invoke(new MethodInvoker(() => Available2.ForeColor = Color.Green));
+                    Invoke(new MethodInvoker(() => Call2.Enabled = true));
+                    Invoke(new MethodInvoker(() => Available3.Text = "Not Ready"));
+                    Invoke(new MethodInvoker(() => Available3.ForeColor = Color.Red));
+                    Invoke(new MethodInvoker(() => Call3.Enabled = false));
+                }
+                if (data[0] == 54)
+                {
+                    Invoke(new MethodInvoker(() => Available1.Text = "Not Ready"));
+                    Invoke(new MethodInvoker(() => Available1.ForeColor = Color.Red));
+                    Invoke(new MethodInvoker(() => Call1.Enabled = false));
+                    Invoke(new MethodInvoker(() => Available2.Text = "Not Ready"));
+                    Invoke(new MethodInvoker(() => Available2.ForeColor = Color.Red));
+                    Invoke(new MethodInvoker(() => Call2.Enabled = false));
+                    Invoke(new MethodInvoker(() => Available3.Text = "Ready"));
+                    Invoke(new MethodInvoker(() => Available3.ForeColor = Color.Green));
+                    Invoke(new MethodInvoker(() => Call3.Enabled = true));
+                }
+                if (data[0] == 55)
+                {
+                    Invoke(new MethodInvoker(() => Available1.Text = "Not Ready"));
+                    Invoke(new MethodInvoker(() => Available1.ForeColor = Color.Red));
+                    Invoke(new MethodInvoker(() => Call1.Enabled = false));
+                    Invoke(new MethodInvoker(() => Available2.Text = "Not Ready"));
+                    Invoke(new MethodInvoker(() => Available2.ForeColor = Color.Red));
+                    Invoke(new MethodInvoker(() => Call2.Enabled = false));
+                    Invoke(new MethodInvoker(() => Available3.Text = "Not Ready"));
+                    Invoke(new MethodInvoker(() => Available3.ForeColor = Color.Red));
+                    Invoke(new MethodInvoker(() => Call3.Enabled = false));
+                }
+            }
 
             if (data[0] == Packet.START_BYTE && data[1] == count && data[count - 1] == Packet.END_BYTE)
             {
@@ -624,7 +614,7 @@ namespace WindowsFormsApp1
                     Invoke(new MethodInvoker(() => LBPosition.Text = paramPacket.Position_agv.ToString()));
                     Invoke(new MethodInvoker(() => LBSpeed.Text = paramPacket.Speed_agv.ToString()));
                     Invoke(new MethodInvoker(() => LBStatus.Text = paramPacket.Status_agv()));
-                    Invoke(new MethodInvoker(() => LBBattery.Text = paramPacket.Battery_agv.ToString()));
+                   // Invoke(new MethodInvoker(() => LBBattery.Text = paramPacket.Battery_agv.ToString()));
 
 
                 }
@@ -633,6 +623,11 @@ namespace WindowsFormsApp1
         }
 
         private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Tracking_Enter(object sender, EventArgs e)
         {
 
         }

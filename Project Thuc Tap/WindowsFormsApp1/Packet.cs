@@ -226,6 +226,7 @@ namespace WindowsFormsApp1
                     s = "Stop";
                     break;
                 case 0x08: s = "Start"; break;
+                case 0x0A: s ="Go"; break;
                    // { 0x00, "Unknown" },
       /*      { 0x01, "Straight" },
             { 0x02, "Left" },
