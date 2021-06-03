@@ -72,9 +72,6 @@ namespace WindowsFormsApp1
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.AGV = new System.Windows.Forms.DataGridView();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.Battery = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Box.SuspendLayout();
@@ -87,7 +84,6 @@ namespace WindowsFormsApp1
             this.tabPage2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AGV)).BeginInit();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmbMaterial
@@ -456,6 +452,10 @@ namespace WindowsFormsApp1
             this.DeliStationlb.TabIndex = 8;
             this.DeliStationlb.Text = "Delivering Station 1";
             // 
+            // serialPort1
+            // 
+            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -488,7 +488,6 @@ namespace WindowsFormsApp1
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.groupBox5);
-            this.tabPage2.Controls.Add(this.groupBox4);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -500,47 +499,21 @@ namespace WindowsFormsApp1
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.AGV);
-            this.groupBox5.Location = new System.Drawing.Point(559, 6);
+            this.groupBox5.Location = new System.Drawing.Point(6, 6);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(568, 388);
+            this.groupBox5.Size = new System.Drawing.Size(1121, 388);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             // 
             // AGV
             // 
             this.AGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AGV.Location = new System.Drawing.Point(6, 12);
+            this.AGV.Location = new System.Drawing.Point(120, 12);
             this.AGV.Name = "AGV";
             this.AGV.RowHeadersWidth = 51;
             this.AGV.RowTemplate.Height = 24;
-            this.AGV.Size = new System.Drawing.Size(556, 370);
+            this.AGV.Size = new System.Drawing.Size(898, 370);
             this.AGV.TabIndex = 0;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.Battery);
-            this.groupBox4.Controls.Add(this.comboBox1);
-            this.groupBox4.Location = new System.Drawing.Point(6, 6);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(547, 385);
-            this.groupBox4.TabIndex = 0;
-            this.groupBox4.TabStop = false;
-            // 
-            // Battery
-            // 
-            this.Battery.Location = new System.Drawing.Point(212, 21);
-            this.Battery.Multiline = true;
-            this.Battery.Name = "Battery";
-            this.Battery.Size = new System.Drawing.Size(118, 44);
-            this.Battery.TabIndex = 1;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(18, 21);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 0;
             // 
             // AGVData
             // 
@@ -565,8 +538,6 @@ namespace WindowsFormsApp1
             this.tabPage2.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AGV)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -610,9 +581,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button Confirm;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.TextBox Battery;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridView AGV;
         private System.Windows.Forms.Label NextTag;
         private System.Windows.Forms.Label NextMove;

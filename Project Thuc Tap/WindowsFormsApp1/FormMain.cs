@@ -590,24 +590,31 @@ namespace WindowsFormsApp1
             }
             
         }
+
+        private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+           // int s = serialPort1.ReadByte();
+          //  if (s == 48)
+                NextTag.Text = "Turn Right";
+        }
         /*private byte typeOfMessage(byte[] input)
 {
-   byte a = input[5];
-   return a;
+byte a = input[5];
+return a;
 }
 private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
 {
-   System.Threading.Thread.Sleep(200);
-   int inputLengh = serialPort1.ReadBufferSize;
-   byte[] input = new byte[inputLengh];
-   for (int i = 0; i < inputLengh; i++)
-   {
-       input[i] = (byte)serialPort1.ReadByte();
-   }
-   if (input[0] == 0xFF)
-   {
-       MessageBox.Show("AGV is ready to use!");
-   }
+System.Threading.Thread.Sleep(200);
+int inputLengh = serialPort1.ReadBufferSize;
+byte[] input = new byte[inputLengh];
+for (int i = 0; i < inputLengh; i++)
+{
+input[i] = (byte)serialPort1.ReadByte();
+}
+if (input[0] == 0xFF)
+{
+MessageBox.Show("AGV is ready to use!");
+}
 }*/
     }
 }
