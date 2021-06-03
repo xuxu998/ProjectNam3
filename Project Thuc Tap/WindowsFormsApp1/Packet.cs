@@ -17,6 +17,8 @@ namespace WindowsFormsApp1
 
         protected static readonly byte AGV_01 = 0x01;
 
+        public static readonly byte AGV_PARAM_TYPE = 0x03;
+
         protected byte startByte;
         protected byte frameLength;
         protected byte senderAdd;
@@ -81,6 +83,18 @@ namespace WindowsFormsApp1
             this.payload = new byte[input[payloadOffset]];
             this.endByte = input[input.Length - 1];
             Buffer.BlockCopy(input, payloadOffset, payload, 0, input[payloadOffset]);
+        }
+        public byte getMessageType(byte[] inputPacket)
+        {
+            byte type = 0;
+
+            if (inputPacket.Length > 0)
+            {
+                this.parsePacketHeader(inputPacket);
+                type = this.messType;
+            }
+
+            return type;
         }
 
     }
@@ -158,5 +172,74 @@ namespace WindowsFormsApp1
             else
                 return false;
         }
+    }
+    class agvParam : Packet
+    {
+        private byte position_agv;
+        private static readonly int position_agvOffset = 1;
+
+        private byte status_agv;
+        private static readonly int status_agvOffset = 2;
+
+        private byte speed_agv;
+        private static readonly int speed_agvOffset = 3;
+
+        private byte batt_agv;
+        private static readonly int batt_agvOffset = 4;
+
+        public void parsePacket(byte[] input)
+        {
+            this.parsePacketHeader(input);
+            if (this.payload.Length != this.payload[0])
+                return;
+            this.position_agv = this.payload[position_agvOffset];
+            this.status_agv = this.payload[status_agvOffset];
+            this.speed_agv = this.payload[speed_agvOffset];
+            this.batt_agv = this.payload[batt_agvOffset];
+        }
+        public byte Position_agv { get => position_agv; }
+        public byte Speed_agv { get => speed_agv; }
+        public string Status_agv()
+        {
+            string s = "";
+            switch (this.status_agv)
+            {
+                case 0x01:
+                    s = "Go Straigth";
+                    break;
+                case 0x04:
+                    s = "Collect 1"; 
+                    break;
+                case 0x05:
+                    s = "Collect 2";
+                    break;
+                case 0x03:
+                    s = "Turn right";
+                    break;
+                case 0x06:
+                    s = "Delivery";
+                    break;
+                case 0x02:
+                    s = "Turn left";
+                    break;
+                case 0x09:
+                    s = "Stop";
+                    break;
+                case 0x08: s = "Start"; break;
+                   // { 0x00, "Unknown" },
+      /*      { 0x01, "Straight" },
+            { 0x02, "Left" },
+            { 0x03, "Right" },
+            { 0x04, "Collect 1"},
+            { 0x05, "Collect 2"},
+            { 0x06, "Deliver" },
+            { 0x07, "Reverse" },
+            { 0x08, "Start" },
+            { 0x09,"Stop" }*/
+            }
+            return s;
+        }
+        public byte Battery_agv { get => batt_agv; }
+    
     }
 }

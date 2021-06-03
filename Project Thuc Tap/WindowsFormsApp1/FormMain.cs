@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using System.IO;
 using System.Xml;
+using System.Threading;
 
 namespace WindowsFormsApp1
 {
@@ -36,7 +37,7 @@ namespace WindowsFormsApp1
             Available1.ForeColor = Color.Green;
             Available2.ForeColor = Color.Green;
             Available3.ForeColor = Color.Green;
-           Battery.Enabled = false;
+         //  Battery.Enabled = false;
             AGV.DataSource = Hiden.AGVdata("select * from AGV");
 
        
@@ -218,11 +219,11 @@ namespace WindowsFormsApp1
                 txtOutput.Text = BitConverter.ToString(s.OutputPacket);
 
                 if (Case == 2)
-                { byte[] case1 = { 0x08, 0x04, 0x10, 0xAA, 0x09 }; serialPort1.Write(case1, 0, 5); }
+                { byte[] case1 = { 0x7A , 0x19 , 0xFE , 0x01 ,0x01 , 0x13 , 0x01 , 0x08 ,0x02 , 0x04, 0x03 , 0x03 , 0x04 , 0x06 ,0x04 , 0x02 , 0x03 , 0x01 , 0x02 , 0x01  ,0x01 ,0x09 ,0x7F }; serialPort1.Write(case1, 0, 23); }
                 if (Case == 1)
-                { byte[] case2 = { 0x08, 0x04, 0x10, 0x06, 0x04, 0x10, 0xAA, 0x09 }; serialPort1.Write(case2, 0, 8); }
-                if(Case == 2)
-                { byte[] case3 = { 0x08, 0x04, 0x06, 0x06, 0x04, 0x10, 0xAA, 0x09 }; serialPort1.Write(case3, 0, 8); }
+                { byte[] case2 = {  }; serialPort1.Write(case2, 0, 8); }
+                if(Case == 3)
+                { byte[] case3 = {  }; serialPort1.Write(case3, 0, 8); }
             
                 //byte[] data = 
                 //string Temp = txtOutput.Text;
@@ -482,139 +483,158 @@ namespace WindowsFormsApp1
                 txtOutput.Text = BitConverter.ToString(agv1.OutputPacket);
             }
         }
-
-        private void Confirm_Click(object sender, EventArgs e)
+        
+/*        private void Confirm_Click(object sender, EventArgs e)
         {
-            if (serialPort1.IsOpen == true)
-            {
-                byte[] c = { 0x99 };
-                serialPort1.Write(c, 0, 1);
-                int s = serialPort1.ReadByte();
-                txtOutput.Text = s.ToString();
-                if (s == 48)
+            Thread AGV = new Thread(
+                delegate ()
                 {
-                    Available1.Text = "Ready";
-                    Available1.ForeColor = Color.Green;
-                    Call1.Enabled = true;
-                    Available2.Text = "Ready";
-                    Available2.ForeColor = Color.Green;
-                    Call2.Enabled = true;
-                    Available3.Text = "Ready";
-                    Available3.ForeColor = Color.Green;
-                    Call3.Enabled = true;
+                    if (serialPort1.IsOpen == true)
+                    {
+                        byte[] c = { 0x99 };
+                        serialPort1.Write(c, 0, 1);
+                        int s = serialPort1.ReadByte();
+                        txtOutput.Text = s.ToString();
+ 
+                        if (s == 48)
+                        {
+                            Available1.Text = "Ready";
+                            Available1.ForeColor = Color.Green;
+                            Call1.Enabled = true;
+                            Available2.Text = "Ready";
+                            Available2.ForeColor = Color.Green;
+                            Call2.Enabled = true;
+                            Available3.Text = "Ready";
+                            Available3.ForeColor = Color.Green;
+                            Call3.Enabled = true;
+                        }
+                        if (s == 49)
+                        {
+                            Available1.Text = "Ready";
+                            Available1.ForeColor = Color.Green;
+                            Call1.Enabled = true;
+                            Available2.Text = "Ready";
+                            Available2.ForeColor = Color.Green;
+                            Call2.Enabled = true;
+                            Available3.Text = "Not Ready";
+                            Available3.ForeColor = Color.Red;
+                            Call3.Enabled = false;
+                        }
+                        if (s == 50)
+                        {
+                            Available1.Text = "Ready";
+                            Available1.ForeColor = Color.Green;
+                            Call1.Enabled = true;
+                            Available2.Text = "Not Ready";
+                            Available2.ForeColor = Color.Red;
+                            Call2.Enabled = false;
+                            Available3.Text = "Ready";
+                            Available3.ForeColor = Color.Green;
+                            Call3.Enabled = true;
+                        }
+                        if (s == 51)
+                        {
+                            Available1.Text = "Ready";
+                            Available1.ForeColor = Color.Green;
+                            Call1.Enabled = true;
+                            Available2.Text = "Not Ready";
+                            Available2.ForeColor = Color.Red;
+                            Call2.Enabled = false;
+                            Available3.Text = "Not Ready";
+                            Available3.ForeColor = Color.Red;
+                            Call3.Enabled = false;
+                        }
+                        if (s == 52)
+                        {
+                            Available1.Text = "Not Ready";
+                            Available1.ForeColor = Color.Red;
+                            Call1.Enabled = false;
+                            Available2.Text = "Ready";
+                            Available2.ForeColor = Color.Green;
+                            Call2.Enabled = true;
+                            Available3.Text = "Ready";
+                            Available3.ForeColor = Color.Green;
+                            Call3.Enabled = true;
+                        }
+                        if (s == 53)
+                        {
+                            Available1.Text = "Not Ready";
+                            Available1.ForeColor = Color.Red;
+                            Call1.Enabled = false;
+                            Available2.Text = "Ready";
+                            Available2.ForeColor = Color.Green;
+                            Call2.Enabled = true;
+                            Available3.Text = "Not Ready";
+                            Available3.ForeColor = Color.Red;
+                            Call3.Enabled = false;
+                        }
+                        if (s == 54)
+                        {
+                            Available1.Text = "Not Ready";
+                            Available1.ForeColor = Color.Red;
+                            Call1.Enabled = false;
+                            Available2.Text = "Not Ready";
+                            Available2.ForeColor = Color.Red;
+                            Call2.Enabled = false;
+                            Available3.Text = "Ready";
+                            Available3.ForeColor = Color.Green;
+                            Call3.Enabled = true;
+                        }
+                        if (s == 55)
+                        {
+                            Available1.Text = "Not Ready";
+                            Available1.ForeColor = Color.Red;
+                            Call1.Enabled = false;
+                            Available2.Text = "Not Ready";
+                            Available2.ForeColor = Color.Red;
+                            Call2.Enabled = false;
+                            Available3.Text = "Not Ready";
+                            Available3.ForeColor = Color.Red;
+                            Call3.Enabled = false;
+                        }
+                        Thread.Sleep(50);
+                    }
                 }
-                if (s == 49)
-                {
-                    Available1.Text = "Ready";
-                    Available1.ForeColor = Color.Green;
-                    Call1.Enabled = true;
-                    Available2.Text = "Ready";
-                    Available2.ForeColor = Color.Green;
-                    Call2.Enabled = true;
-                    Available3.Text = "Not Ready";
-                    Available3.ForeColor = Color.Red;
-                    Call3.Enabled = false;
-                }
-                if (s == 50)
-                {
-                    Available1.Text = "Ready";
-                    Available1.ForeColor = Color.Green;
-                    Call1.Enabled = true;
-                    Available2.Text = "Not Ready";
-                    Available2.ForeColor = Color.Red;
-                    Call2.Enabled = false;
-                    Available3.Text = "Ready";
-                    Available3.ForeColor = Color.Green;
-                    Call3.Enabled = true;
-                }
-                if (s == 51)
-                {
-                    Available1.Text = "Ready";
-                    Available1.ForeColor = Color.Green;
-                    Call1.Enabled = true;
-                    Available2.Text = "Not Ready";
-                    Available2.ForeColor = Color.Red;
-                    Call2.Enabled = false;
-                    Available3.Text = "Not Ready";
-                    Available3.ForeColor = Color.Red;
-                    Call3.Enabled = false;
-                }
-                if (s == 52)
-                {
-                    Available1.Text = "Not Ready";
-                    Available1.ForeColor = Color.Red;
-                    Call1.Enabled = false;
-                    Available2.Text = "Ready";
-                    Available2.ForeColor = Color.Green;
-                    Call2.Enabled = true;
-                    Available3.Text = "Ready";
-                    Available3.ForeColor = Color.Green;
-                    Call3.Enabled = true;
-                }
-                if (s == 53)
-                {
-                    Available1.Text = "Not Ready";
-                    Available1.ForeColor = Color.Red;
-                    Call1.Enabled = false;
-                    Available2.Text = "Ready";
-                    Available2.ForeColor = Color.Green;
-                    Call2.Enabled = true;
-                    Available3.Text = "Not Ready";
-                    Available3.ForeColor = Color.Red;
-                    Call3.Enabled = false;
-                }
-                if (s == 54)
-                {
-                    Available1.Text = "Not Ready";
-                    Available1.ForeColor = Color.Red;
-                    Call1.Enabled = false;
-                    Available2.Text = "Not Ready";
-                    Available2.ForeColor = Color.Red;
-                    Call2.Enabled = false;
-                    Available3.Text = "Ready";
-                    Available3.ForeColor = Color.Green;
-                    Call3.Enabled = true;
-                }
-                if (s == 55)
-                {
-                    Available1.Text = "Not Ready";
-                    Available1.ForeColor = Color.Red;
-                    Call1.Enabled = false;
-                    Available2.Text = "Not Ready";
-                    Available2.ForeColor = Color.Red;
-                    Call2.Enabled = false;
-                    Available3.Text = "Not Ready";
-                    Available3.ForeColor = Color.Red;
-                    Call3.Enabled = false;
-                }
-            }
-            
-        }
+                );
+            AGV.Start();    
+
+        }*/
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-           // int s = serialPort1.ReadByte();
-          //  if (s == 48)
-                NextTag.Text = "Turn Right";
+            System.Threading.Thread.Sleep(500);
+            int count = 0;
+            int inputLength = serialPort1.ReadBufferSize;
+            byte[] input = new byte[inputLength];
+            count = serialPort1.Read(input, 0, inputLength);
+
+            byte[] data = new byte[count];
+            Buffer.BlockCopy(input, 0, data, 0, count);
+
+            if (data[0] == Packet.START_BYTE && data[1] == count && data[count - 1] == Packet.END_BYTE)
+            {
+                Packet rxpacket = new Packet();
+                byte message_type = rxpacket.getMessageType(data);
+                if (message_type == Packet.AGV_PARAM_TYPE)
+                {
+                    agvParam paramPacket = new agvParam();
+                    paramPacket.parsePacket(data);
+
+                    // Display data
+                    Invoke(new MethodInvoker(() => LBPosition.Text = paramPacket.Position_agv.ToString()));
+                    Invoke(new MethodInvoker(() => LBSpeed.Text = paramPacket.Speed_agv.ToString()));
+                    Invoke(new MethodInvoker(() => LBStatus.Text = paramPacket.Status_agv()));
+                    Invoke(new MethodInvoker(() => LBBattery.Text = paramPacket.Battery_agv.ToString()));
+
+
+                }
+
+            }
         }
-        /*private byte typeOfMessage(byte[] input)
-{
-byte a = input[5];
-return a;
-}
-private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
-{
-System.Threading.Thread.Sleep(200);
-int inputLengh = serialPort1.ReadBufferSize;
-byte[] input = new byte[inputLengh];
-for (int i = 0; i < inputLengh; i++)
-{
-input[i] = (byte)serialPort1.ReadByte();
-}
-if (input[0] == 0xFF)
-{
-MessageBox.Show("AGV is ready to use!");
-}
-}*/
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

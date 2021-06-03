@@ -377,6 +377,13 @@ namespace WindowsFormsApp1
             }
             return k;
         }
+        public void IsReady()
+        {
+                
+        {
+
+         }
+}
       
     }
 }

@@ -36,12 +36,6 @@ namespace WindowsFormsApp1
             this.Startbtn = new System.Windows.Forms.Button();
             this.Box = new System.Windows.Forms.GroupBox();
             this.Tracking = new System.Windows.Forms.GroupBox();
-            this.NextTag = new System.Windows.Forms.Label();
-            this.NextMove = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.Location = new System.Windows.Forms.Label();
-            this.ListAGV = new System.Windows.Forms.ComboBox();
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Confirm = new System.Windows.Forms.Button();
@@ -74,6 +68,14 @@ namespace WindowsFormsApp1
             this.AGV = new System.Windows.Forms.DataGridView();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.LBPosition = new System.Windows.Forms.Label();
+            this.LBStatus = new System.Windows.Forms.Label();
+            this.LBSpeed = new System.Windows.Forms.Label();
+            this.LBBattery = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.Box.SuspendLayout();
             this.Tracking.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -136,12 +138,14 @@ namespace WindowsFormsApp1
             // 
             // Tracking
             // 
-            this.Tracking.Controls.Add(this.NextTag);
-            this.Tracking.Controls.Add(this.NextMove);
+            this.Tracking.Controls.Add(this.label10);
+            this.Tracking.Controls.Add(this.label9);
             this.Tracking.Controls.Add(this.label8);
             this.Tracking.Controls.Add(this.label7);
-            this.Tracking.Controls.Add(this.Location);
-            this.Tracking.Controls.Add(this.ListAGV);
+            this.Tracking.Controls.Add(this.LBBattery);
+            this.Tracking.Controls.Add(this.LBSpeed);
+            this.Tracking.Controls.Add(this.LBStatus);
+            this.Tracking.Controls.Add(this.LBPosition);
             this.Tracking.Controls.Add(this.txtOutput);
             this.Tracking.Location = new System.Drawing.Point(613, 150);
             this.Tracking.Name = "Tracking";
@@ -149,64 +153,6 @@ namespace WindowsFormsApp1
             this.Tracking.TabIndex = 23;
             this.Tracking.TabStop = false;
             this.Tracking.Text = "Tracking";
-            // 
-            // NextTag
-            // 
-            this.NextTag.AutoSize = true;
-            this.NextTag.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NextTag.Location = new System.Drawing.Point(357, 55);
-            this.NextTag.Name = "NextTag";
-            this.NextTag.Size = new System.Drawing.Size(43, 24);
-            this.NextTag.TabIndex = 16;
-            this.NextTag.Text = "Tag";
-            // 
-            // NextMove
-            // 
-            this.NextMove.AutoSize = true;
-            this.NextMove.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NextMove.Location = new System.Drawing.Point(324, 28);
-            this.NextMove.Name = "NextMove";
-            this.NextMove.Size = new System.Drawing.Size(125, 24);
-            this.NextMove.TabIndex = 15;
-            this.NextMove.Text = "Next Location";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(35, 28);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(124, 24);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "AGV Number";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(213, 28);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(81, 24);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "Location";
-            // 
-            // Location
-            // 
-            this.Location.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Location.Location = new System.Drawing.Point(197, 52);
-            this.Location.Name = "Location";
-            this.Location.Size = new System.Drawing.Size(108, 30);
-            this.Location.TabIndex = 12;
-            this.Location.Text = "Tag";
-            this.Location.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ListAGV
-            // 
-            this.ListAGV.FormattingEnabled = true;
-            this.ListAGV.Location = new System.Drawing.Point(38, 54);
-            this.ListAGV.Name = "ListAGV";
-            this.ListAGV.Size = new System.Drawing.Size(121, 24);
-            this.ListAGV.TabIndex = 11;
             // 
             // txtOutput
             // 
@@ -244,7 +190,6 @@ namespace WindowsFormsApp1
             this.Confirm.TabIndex = 27;
             this.Confirm.Text = "Confirm";
             this.Confirm.UseVisualStyleBackColor = true;
-            this.Confirm.Click += new System.EventHandler(this.Confirm_Click);
             // 
             // Available3
             // 
@@ -515,6 +460,83 @@ namespace WindowsFormsApp1
             this.AGV.Size = new System.Drawing.Size(898, 370);
             this.AGV.TabIndex = 0;
             // 
+            // LBPosition
+            // 
+            this.LBPosition.AutoSize = true;
+            this.LBPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBPosition.Location = new System.Drawing.Point(44, 97);
+            this.LBPosition.Name = "LBPosition";
+            this.LBPosition.Size = new System.Drawing.Size(0, 24);
+            this.LBPosition.TabIndex = 17;
+            // 
+            // LBStatus
+            // 
+            this.LBStatus.AutoSize = true;
+            this.LBStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBStatus.Location = new System.Drawing.Point(157, 97);
+            this.LBStatus.Name = "LBStatus";
+            this.LBStatus.Size = new System.Drawing.Size(0, 24);
+            this.LBStatus.TabIndex = 18;
+            this.LBStatus.Click += new System.EventHandler(this.label10_Click);
+            // 
+            // LBSpeed
+            // 
+            this.LBSpeed.AutoSize = true;
+            this.LBSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBSpeed.Location = new System.Drawing.Point(268, 97);
+            this.LBSpeed.Name = "LBSpeed";
+            this.LBSpeed.Size = new System.Drawing.Size(0, 24);
+            this.LBSpeed.TabIndex = 19;
+            // 
+            // LBBattery
+            // 
+            this.LBBattery.AutoSize = true;
+            this.LBBattery.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBBattery.Location = new System.Drawing.Point(382, 97);
+            this.LBBattery.Name = "LBBattery";
+            this.LBBattery.Size = new System.Drawing.Size(0, 24);
+            this.LBBattery.TabIndex = 20;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(44, 52);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(76, 24);
+            this.label7.TabIndex = 21;
+            this.label7.Text = "Position";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(157, 52);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(60, 24);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "Status";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(268, 52);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(66, 24);
+            this.label9.TabIndex = 23;
+            this.label9.Text = "Speed";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(382, 54);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(66, 24);
+            this.label10.TabIndex = 24;
+            this.label10.Text = "Battery";
+            // 
             // AGVData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -582,11 +604,13 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button Confirm;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.DataGridView AGV;
-        private System.Windows.Forms.Label NextTag;
-        private System.Windows.Forms.Label NextMove;
+        private System.Windows.Forms.Label LBBattery;
+        private System.Windows.Forms.Label LBSpeed;
+        private System.Windows.Forms.Label LBStatus;
+        private System.Windows.Forms.Label LBPosition;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label Location;
-        private System.Windows.Forms.ComboBox ListAGV;
     }
 }

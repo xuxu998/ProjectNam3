@@ -17,7 +17,9 @@ namespace WindowsFormsApp1
             { 0x04, "Collect 1"},
             { 0x05, "Collect 2"},
             { 0x06, "Deliver" },
-            { 0x07, "Reverse" }
+            { 0x07, "Reverse" },
+            { 0x08, "Start" },
+            { 0x09,"Stop" }
         };
         private byte tagId;
         private byte tagCmd;
