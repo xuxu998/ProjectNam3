@@ -38,7 +38,7 @@ namespace WindowsFormsApp1
             Available2.ForeColor = Color.Green;
             Available3.ForeColor = Color.Green;
          //  Battery.Enabled = false;
-            AGV.DataSource = Hiden.AGVdata("select * from AGV");
+            AGV.DataSource = Hiden.AGVdata("select * from AGVData");
 
        
         }
@@ -216,14 +216,14 @@ namespace WindowsFormsApp1
                 }
                 Route s = new Route();
                 s.setOutput(0x01, tripRouteData);
-                txtOutput.Text = BitConverter.ToString(s.OutputPacket);
+                //txtOutput.Text = BitConverter.ToString(s.OutputPacket);
 
                 if (Case == 2)
                 { byte[] case1 = { 0x7A , 0x19 , 0xFE , 0x01 ,0x01 , 0x13 , 0x01 , 0x08 ,0x02 , 0x04, 0x03 , 0x03 , 0x04 , 0x06 ,0x04 , 0x02 , 0x03 , 0x01 , 0x02 , 0x01  ,0x01 ,0x09 ,0x7F }; serialPort1.Write(case1, 0, 23); }
                 if (Case == 1)
-                { byte[] case2 = {  }; serialPort1.Write(case2, 0, 8); }
+                { byte[] case2 = { 0x7A , 0x1F , 0xFE , 0x01 , 0x01 ,0x19 , 0x01 , 0x08 , 0x02,  0x04,  0x03 , 0x03 ,0x04 , 0x06 , 0x05 , 0x03 , 0x06 , 0x06 , 0x06 ,0x02 , 0x05 , 0x01 ,0x04 , 0x02 ,0x03 ,0x01 , 0x02 , 0x01 , 0x01 , 0x09 , 0x7F }; serialPort1.Write(case2, 0, 31); }
                 if(Case == 3)
-                { byte[] case3 = {  }; serialPort1.Write(case3, 0, 8); }
+                { byte[] case3 = { 0x7A , 0x1F , 0xFE , 0x01 , 0x01 ,0x19 , 0x01 , 0x08 , 0x02 , 0x04 ,  0x03,  0x03 , 0x04 , 0x01 , 0x05 , 0x03 , 0x06 , 0x06 , 0x06,  0x02 , 0x05 , 0x01 , 0x04 , 0x02 , 0x03 , 0x01 , 0x02 , 0x01 , 0x01 , 0x09 , 0x7F }; serialPort1.Write(case3, 0, 31); }
             
                 //byte[] data = 
                 //string Temp = txtOutput.Text;
@@ -336,7 +336,6 @@ namespace WindowsFormsApp1
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            int i = 0;
         }
 
         private void Call1_CheckedChanged(object sender, EventArgs e)
@@ -472,7 +471,7 @@ namespace WindowsFormsApp1
             {
                 byte agv = 0x01;
                 agvAvailable agv1 = new agvAvailable(agv);
-                txtOutput.Text = BitConverter.ToString(agv1.OutputPacket);
+                //txtOutput.Text = BitConverter.ToString(agv1.OutputPacket);
                 serialPort1.Write(agv1.OutputPacket, 0, agv1.OutputPacket.Length);
 
             }
@@ -480,7 +479,7 @@ namespace WindowsFormsApp1
             {
                 byte agv = 0x02;
                 agvAvailable agv1 = new agvAvailable(agv);
-                txtOutput.Text = BitConverter.ToString(agv1.OutputPacket);
+               // txtOutput.Text = BitConverter.ToString(agv1.OutputPacket);
             }
         }
         
@@ -630,6 +629,26 @@ namespace WindowsFormsApp1
         private void Tracking_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void LBPosition_TextChanged(object sender, EventArgs e)
+        {
+            DateTime time = DateTime.Now;
+            string time1 = Hiden.Date(time.ToString());
+            Hiden.Data("insert into AGVData values (1,'"+time1 +"',"+ LBPosition.Text.ToString()+",80,"+ LBSpeed.Text.ToString() + ",'" + LBStatus.Text.ToString() + "')");
+        }
+
+        private void ReloadBtn_Click(object sender, EventArgs e)
+        {
+            
+            AGV.DataSource = Hiden.Data("select * from AGVData");
+        }
+
+        private void LBStatus_TextChanged(object sender, EventArgs e)
+        {
+            DateTime time = DateTime.Now;
+            string time1 = Hiden.Date(time.ToString());
+            Hiden.Data("insert into AGVData values (1,'" + time1 + "'," + LBPosition.Text.ToString() + ",80," + LBSpeed.Text.ToString() + ",'" + LBStatus.Text.ToString()+"')");
         }
     }
 }

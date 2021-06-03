@@ -44,7 +44,6 @@ namespace WindowsFormsApp1
             this.LBSpeed = new System.Windows.Forms.Label();
             this.LBStatus = new System.Windows.Forms.Label();
             this.LBPosition = new System.Windows.Forms.Label();
-            this.txtOutput = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Confirm = new System.Windows.Forms.Button();
             this.Available3 = new System.Windows.Forms.Label();
@@ -76,6 +75,7 @@ namespace WindowsFormsApp1
             this.AGV = new System.Windows.Forms.DataGridView();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.ReloadBtn = new System.Windows.Forms.Button();
             this.Box.SuspendLayout();
             this.Tracking.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -146,7 +146,6 @@ namespace WindowsFormsApp1
             this.Tracking.Controls.Add(this.LBSpeed);
             this.Tracking.Controls.Add(this.LBStatus);
             this.Tracking.Controls.Add(this.LBPosition);
-            this.Tracking.Controls.Add(this.txtOutput);
             this.Tracking.Location = new System.Drawing.Point(613, 150);
             this.Tracking.Name = "Tracking";
             this.Tracking.Size = new System.Drawing.Size(502, 231);
@@ -225,6 +224,7 @@ namespace WindowsFormsApp1
             this.LBStatus.TabIndex = 18;
             this.LBStatus.Text = "Unknown";
             this.LBStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LBStatus.TextChanged += new System.EventHandler(this.LBStatus_TextChanged);
             this.LBStatus.Click += new System.EventHandler(this.label10_Click);
             // 
             // LBPosition
@@ -236,14 +236,7 @@ namespace WindowsFormsApp1
             this.LBPosition.Size = new System.Drawing.Size(20, 24);
             this.LBPosition.TabIndex = 17;
             this.LBPosition.Text = "1";
-            // 
-            // txtOutput
-            // 
-            this.txtOutput.Location = new System.Drawing.Point(48, 188);
-            this.txtOutput.Name = "txtOutput";
-            this.txtOutput.Size = new System.Drawing.Size(420, 22);
-            this.txtOutput.TabIndex = 10;
-            this.txtOutput.TextChanged += new System.EventHandler(this.txtOutput_TextChanged);
+            this.LBPosition.TextChanged += new System.EventHandler(this.LBPosition_TextChanged);
             // 
             // groupBox2
             // 
@@ -526,6 +519,7 @@ namespace WindowsFormsApp1
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.ReloadBtn);
             this.groupBox5.Controls.Add(this.AGV);
             this.groupBox5.Location = new System.Drawing.Point(6, 6);
             this.groupBox5.Name = "groupBox5";
@@ -536,12 +530,23 @@ namespace WindowsFormsApp1
             // AGV
             // 
             this.AGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AGV.Location = new System.Drawing.Point(120, 12);
+            this.AGV.Location = new System.Drawing.Point(188, 12);
             this.AGV.Name = "AGV";
             this.AGV.RowHeadersWidth = 51;
             this.AGV.RowTemplate.Height = 24;
             this.AGV.Size = new System.Drawing.Size(898, 370);
             this.AGV.TabIndex = 0;
+            // 
+            // ReloadBtn
+            // 
+            this.ReloadBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReloadBtn.Location = new System.Drawing.Point(60, 172);
+            this.ReloadBtn.Name = "ReloadBtn";
+            this.ReloadBtn.Size = new System.Drawing.Size(93, 57);
+            this.ReloadBtn.TabIndex = 1;
+            this.ReloadBtn.Text = "Reload";
+            this.ReloadBtn.UseVisualStyleBackColor = true;
+            this.ReloadBtn.Click += new System.EventHandler(this.ReloadBtn_Click);
             // 
             // AGVData
             // 
@@ -580,7 +585,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label Productlb;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label DeliStationlb;
-        private System.Windows.Forms.TextBox txtOutput;
         private System.Windows.Forms.ComboBox PortCb;
         private System.Windows.Forms.Button Disconnectbtn;
         private System.Windows.Forms.Button Connectbtn;
@@ -618,5 +622,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button ReloadBtn;
     }
 }
