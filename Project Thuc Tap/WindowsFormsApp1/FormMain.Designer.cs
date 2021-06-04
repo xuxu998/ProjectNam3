@@ -72,10 +72,10 @@ namespace WindowsFormsApp1
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.ReloadBtn = new System.Windows.Forms.Button();
             this.AGV = new System.Windows.Forms.DataGridView();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.ReloadBtn = new System.Windows.Forms.Button();
             this.Box.SuspendLayout();
             this.Tracking.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -266,6 +266,7 @@ namespace WindowsFormsApp1
             this.Confirm.TabIndex = 27;
             this.Confirm.Text = "Confirm";
             this.Confirm.UseVisualStyleBackColor = true;
+            this.Confirm.Click += new System.EventHandler(this.Confirm_Click_1);
             // 
             // Available3
             // 
@@ -527,16 +528,6 @@ namespace WindowsFormsApp1
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             // 
-            // AGV
-            // 
-            this.AGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AGV.Location = new System.Drawing.Point(188, 12);
-            this.AGV.Name = "AGV";
-            this.AGV.RowHeadersWidth = 51;
-            this.AGV.RowTemplate.Height = 24;
-            this.AGV.Size = new System.Drawing.Size(898, 370);
-            this.AGV.TabIndex = 0;
-            // 
             // ReloadBtn
             // 
             this.ReloadBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -547,6 +538,16 @@ namespace WindowsFormsApp1
             this.ReloadBtn.Text = "Reload";
             this.ReloadBtn.UseVisualStyleBackColor = true;
             this.ReloadBtn.Click += new System.EventHandler(this.ReloadBtn_Click);
+            // 
+            // AGV
+            // 
+            this.AGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AGV.Location = new System.Drawing.Point(188, 12);
+            this.AGV.Name = "AGV";
+            this.AGV.RowHeadersWidth = 51;
+            this.AGV.RowTemplate.Height = 24;
+            this.AGV.Size = new System.Drawing.Size(898, 370);
+            this.AGV.TabIndex = 0;
             // 
             // AGVData
             // 
