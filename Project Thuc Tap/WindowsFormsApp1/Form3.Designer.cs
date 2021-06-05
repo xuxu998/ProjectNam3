@@ -70,7 +70,6 @@ namespace WindowsFormsApp1
             this.Clrbtn = new System.Windows.Forms.Button();
             this.Searchbtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.Account.SuspendLayout();
             this.Accounttab.SuspendLayout();
             this.Changetab.SuspendLayout();
@@ -86,7 +85,6 @@ namespace WindowsFormsApp1
             // 
             this.Account.Controls.Add(this.Accounttab);
             this.Account.Controls.Add(this.DayCB);
-            this.Account.Controls.Add(this.tabPage3);
             this.Account.Location = new System.Drawing.Point(12, 12);
             this.Account.Name = "Account";
             this.Account.SelectedIndex = 0;
@@ -502,16 +500,6 @@ namespace WindowsFormsApp1
             this.dataGridView1.Size = new System.Drawing.Size(674, 327);
             this.dataGridView1.TabIndex = 0;
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1275, 397);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Account Change History";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
             // Controltab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -582,6 +570,5 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TabPage tabPage3;
     }
 }

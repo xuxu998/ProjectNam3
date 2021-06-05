@@ -246,7 +246,7 @@ namespace WindowsFormsApp1
                         Hiden.Data("insert into HistoryDelivery values('" + this.user + "','" + time1 + "','" + "1'" + ",'1'," + "'Type " + this.cmbMaterial.SelectedItem.ToString() + "')");
                         break;
                 }
-                timer1.Enabled = true;
+                timer1.Enabled = false;
                 Call1.Enabled = true;
                 Call2.Enabled = true;
                 Call3.Enabled = true;
